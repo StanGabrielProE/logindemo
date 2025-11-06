@@ -19,7 +19,7 @@ namespace ConsoleApp1
                 GebruikersDataInvoeren(ref userWachtword, (wachtwoord) => Regex.IsMatch(wachtwoord, @"\w{8}[1-9]"));
                 if (!string.IsNullOrEmpty(userWachtword)) 
                 {
-                    Console.WriteLine($"Welkom     {username}");
+                    Console.WriteLine($"Welkom {username}");
                 }
             }else 
             {
@@ -32,7 +32,7 @@ namespace ConsoleApp1
 
         public static void GebruikersDataInvoeren ( ref string input, Predicate<string> conditie) 
         {
-            int counter = 0;
+            int counter = 1;
             while (!conditie(input)) 
             {
                 if (counter == 3)
@@ -44,7 +44,7 @@ namespace ConsoleApp1
 
                 Console.WriteLine($"{nameof(input)} niet juist is , jij hebt nog {3 - counter} keer ");
                 counter++;
-                input = string.Empty;
+             
                 input = Console.ReadLine();
                   
                     
