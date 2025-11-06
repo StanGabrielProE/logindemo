@@ -9,8 +9,25 @@ namespace ConsoleApp1
             Console.WriteLine("Invoer jouw username");
             string username = Console.ReadLine();
             GebruikersDataInvoeren(ref username, (user) => Regex.IsMatch(user, @"\w{8}"));
-            Console.WriteLine("Invoer jouw wachtword");
-            string userWachtword = Console.ReadLine();
+            Console.WriteLine(username);
+          
+        
+            if (!string.IsNullOrEmpty(username))
+            {
+                Console.WriteLine("Invoer jouw wachtword");
+                string userWachtword = Console.ReadLine();
+                GebruikersDataInvoeren(ref userWachtword, (wachtwoord) => Regex.IsMatch(wachtwoord, @"\w{8}[1-9]"));
+                if (!string.IsNullOrEmpty(userWachtword)) 
+                {
+                    Console.WriteLine($"Welkom{username}");
+                }
+            }else 
+            {
+                Console.WriteLine("Sorry  maar je kan niet doorgaan");
+            }
+
+
+            
         }
 
         public static void GebruikersDataInvoeren ( ref string input, Predicate<string> conditie) 
@@ -18,17 +35,21 @@ namespace ConsoleApp1
             int counter = 0;
             while (!conditie(input)) 
             {
-                Console.WriteLine($"{nameof(input)} niet juist is , jij hebt nog {3 - counter} keer ");
-                counter++;
-                    input = Console.ReadLine();
-                  
-                    
-                
-               if (counter == 3) 
+                if (counter == 3)
                 {
+                    input = string.Empty;
                     Console.WriteLine("Sorry maar je kan niet doorgaan");
                     break;
                 }
+
+                Console.WriteLine($"{nameof(input)} niet juist is , jij hebt nog {3 - counter} keer ");
+                counter++;
+                input = string.Empty;
+                input = Console.ReadLine();
+                  
+                    
+                
+            
 
             };
         }
