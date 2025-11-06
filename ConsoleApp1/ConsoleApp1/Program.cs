@@ -19,7 +19,7 @@ namespace ConsoleApp1
                 GebruikersDataInvoeren(ref userWachtword, (wachtwoord) => Regex.IsMatch(wachtwoord, @"\w{8}[1-9]"));
                 if (!string.IsNullOrEmpty(userWachtword)) 
                 {
-                    Console.WriteLine($"Welkom{username}");
+                    Console.WriteLine($"Welkom     {username}");
                 }
             }else 
             {
